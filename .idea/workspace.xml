@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="89901937-90bd-40d8-9c3f-9376c06fcb7f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/database.spatial/src/main/kotlin/com/nalepa/mateusz/database/spatial/domain/domain.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sourceCode/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/database.spatial/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sourceCode/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/database.spatial/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sourceCode/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/database.spatial/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sourceCode/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/database.spatial/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sourceCode/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/database.spatial/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sourceCode/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/database.spatial/gradlew.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sourceCode/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/database.spatial/settings.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sourceCode/src/main/kotlin/com/nalepa/mateusz/database/spatial/Application.kt" beforeDir="false" afterPath="$PROJECT_DIR$/database.spatial/src/main/kotlin/com/nalepa/mateusz/database/spatial/Application.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sourceCode/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/database.spatial/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sourceCode/src/test/kotlin/com/nalepa/mateusz/database/spatial/ApplicationTests.kt" beforeDir="false" afterPath="$PROJECT_DIR$/database.spatial/src/test/kotlin/com/nalepa/mateusz/database/spatial/ApplicationTests.kt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$/database.spatial">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2020.1.4\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1qoFc1xsih9qBzWsesRupHvNkbb" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="89901937-90bd-40d8-9c3f-9376c06fcb7f" name="Default Changelist" comment="" />
+      <created>1617738111810</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1617738111810</updated>
+    </task>
+    <servers />
+  </component>
+</project>
