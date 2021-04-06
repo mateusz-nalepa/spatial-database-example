@@ -9,6 +9,7 @@ class Message(
         var id: Int? = null
 )
 
+
 class User(
         var userName: String,
         var firstName: String,
