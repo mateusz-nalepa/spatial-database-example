@@ -28,6 +28,7 @@ class UserController(val repository: UserRepository) {
         @PathVariable xMax: Double, @PathVariable yMax: Double
     ) = repository.findByBoundingBox(PGbox2d(Point(xMin, yMin), Point(xMax, yMax)))
 
+    //TODO: remove it?
     @PutMapping("/{userName}/location/{x},{y}")
     @ResponseStatus(NO_CONTENT)
     fun updateLocation(

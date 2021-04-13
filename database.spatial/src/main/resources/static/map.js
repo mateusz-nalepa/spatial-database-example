@@ -78,6 +78,11 @@ map.addOverlay(popup);
 // display popup on click
 map.on('click', function(evt) {
     var coordinate = evt.coordinate;
+
+    console.log("LON AND LAT??");
+    console.log("LON: ", coordinate[0]);
+    console.log("LAT: ", coordinate[1]);
+
     var feature = map.forEachFeatureAtPixel(evt.pixel,
         function(feature) {
           return feature;

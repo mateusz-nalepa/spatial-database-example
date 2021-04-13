@@ -22,7 +22,10 @@ class DefaultMessageRepository : MessageRepository {
             id = Messages.insert(toRow(message))[Messages.id]
         )
 
-    override fun findAll() = Messages.selectAll().map { it.toMessage() }
+    override fun findAll() =
+        Messages
+            .selectAll()
+            .map { it.toMessage() }
 
     override fun findByBoundingBox(box: PGbox2d) =
         Messages
@@ -47,11 +50,13 @@ class DefaultMessageRepository : MessageRepository {
         it[location] = message.location?.toEntity()
     }
 
-    private fun ResultRow.toMessage() =
-        Message(
+    private fun ResultRow.toMessage(): Message {
+        println("processing")
+        return Message(
             content = this[Messages.content],
             author = this[Messages.author],
             location = this[Messages.location]?.toDomain(),
             id = this[Messages.id]
         )
+    }
 }
