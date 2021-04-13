@@ -1,5 +1,3 @@
-//(function() {
-
 $.getJSON("/user", function(data) {
     $.each( data, function() {
         $('#select-user').append($('<option>', {
@@ -10,32 +8,42 @@ $.getJSON("/user", function(data) {
 
 // #################################### Map ####################################
 
-var view = new ol.View({
-    zoom: 8
-});
+var view =  new ol.View({
+                 center: ol.proj.fromLonLat([19.944544, 50.049683]),
+                 zoom: 1
+               });
 
-var map = new ol.Map({
-    layers: [new ol.layer.Tile({
+  var map = new ol.Map({
+    target: 'map',
+    layers: [
+      new ol.layer.Tile({
         source: new ol.source.OSM()
-    })], target: "map", controls: ol.control.defaults({
-        attributionOptions: ({
-            collapsible: false
-        })
-    }), view: view
-});
+      })
+    ],
+    view: view
+  });
 
 // ################################# Geolocation #################################
 
 var geolocation = new ol.Geolocation({
-    projection: view.getProjection()
+  // enableHighAccuracy must be set to true to have the heading value.
+  trackingOptions: {
+    enableHighAccuracy: true,
+  },
+  projection: view.getProjection(),
 });
+
+
 geolocation.on("error", function (error) {
     alert("Geolocation error: " + error.message);
 });
 var positionFeature = new ol.Feature();
+
+
 positionFeature.setStyle(new ol.style.Style({
     image: new ol.style.Icon({src: "u.png", scale: 0.5})
 }));
+
 var centerDefined = false;
 geolocation.on("change:position", function () {
     var coordinates = geolocation.getPosition();
@@ -49,10 +57,12 @@ geolocation.on("change:position", function () {
     positionFeature.setGeometry(coordinates ? new ol.geom.Point(coordinates) : null);
 });
 new ol.layer.Vector({
-    map: map, source: new ol.source.Vector({
+    map: map,
+     source: new ol.source.Vector({
         features: [positionFeature]
     })
 });
+
 geolocation.setTracking(true);
 
 // ################################# Popup #################################
@@ -156,6 +166,3 @@ source.addEventListener('message', function(e) {
                     });
   vectorSource.addFeature(feature);
 }, false);
-
-
-//})();
