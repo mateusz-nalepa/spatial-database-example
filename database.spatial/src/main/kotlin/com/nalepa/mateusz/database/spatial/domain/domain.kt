@@ -1,18 +1,21 @@
 package com.nalepa.mateusz.database.spatial.domain
 
-import org.postgis.Point
 
-class Message(
-        var content: String,
-        var author: String,
-        var location: Point? = null,
-        var id: Int? = null
+data class Message(
+    val content: String,
+    val author: String,
+    val location: Point? = null,
+    val id: Int? = null
 )
 
+data class User(
+    val userName: String,
+    val firstName: String,
+    val lastName: String,
+    val location: Point? = null
+)
 
-class User(
-        var userName: String,
-        var firstName: String,
-        var lastName: String,
-        var location: Point? = null
+data class Point(
+    val x: Double,
+    val y: Double
 )

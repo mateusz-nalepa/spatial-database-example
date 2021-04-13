@@ -5,31 +5,39 @@ import com.nalepa.mateusz.database.spatial.domain.User
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.statements.UpdateBuilder
 import org.postgis.PGbox2d
-import org.postgis.Point
 import org.springframework.stereotype.Repository
 import org.springframework.transaction.annotation.Transactional
 
-interface UserRepository: CrudRepository<User, String>
+interface UserRepository : CrudRepository<User, String>
 
 @Repository
 @Transactional // Should be at @Service level in real applications
-class DefaultUserRepository: UserRepository {
+class DefaultUserRepository : UserRepository {
 
     override fun createTable() = SchemaUtils.create(Users)
 
-    override fun create(m: User): User {
-        Users.insert(toRow(m))
-        return m
+    @Suppress("PARAMETER_NAME_CHANGED_ON_OVERRIDE")
+    override fun create(user: User): User {
+        Users.insert(toRow(user))
+        return user
     }
 
-    override fun updateLocation(userName:String, location: Point) {
+    override fun updateLocation(userName: String, location: PostGisPoint) {
         location.srid = 4326
-        Users.update({Users.userName eq userName}) { it[Users.location] = location}
+        Users.update({ Users.userName eq userName }) {
+            it[Users.location] = location
+        }
     }
 
-    override fun findAll() = Users.selectAll().map { fromRow(it) }
+    override fun findAll() =
+        Users
+            .selectAll()
+            .map { it.toUser() }
 
-    override fun findByBoundingBox(box: PGbox2d) = Users.select { Users.location within box }.map { fromRow(it) }
+    override fun findByBoundingBox(box: PGbox2d) =
+        Users
+            .select { Users.location within box }
+            .map { it.toUser() }
 
     override fun deleteAll() = Users.deleteAll()
 
@@ -37,10 +45,14 @@ class DefaultUserRepository: UserRepository {
         it[userName] = u.userName
         it[firstName] = u.firstName
         it[lastName] = u.lastName
-        it[location] = u.location
+        it[location] = u.location?.toEntity()
     }
 
-    private fun fromRow(r: ResultRow) =
-        User(r[Users.userName], r[Users.firstName], r[Users.lastName], r[Users.location])
-
+    private fun ResultRow.toUser() =
+        User(
+            userName = this[Users.userName],
+            firstName = this[Users.firstName],
+            lastName = this[Users.lastName],
+            location = this[Users.location]?.toDomain()
+        )
 }

@@ -5,7 +5,7 @@ import org.postgis.Point
 
 interface CrudRepository<T, K> {
     fun createTable()
-    fun create(m: T): T
+    fun create(t: T): T
     fun findAll(): Iterable<T>
     fun deleteAll(): Int
     fun findByBoundingBox(box: PGbox2d): Iterable<T>

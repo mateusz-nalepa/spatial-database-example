@@ -1,3 +1,5 @@
+//(function() {
+
 $.getJSON("/user", function(data) {
     $.each( data, function() {
         $('#select-user').append($('<option>', {
@@ -154,3 +156,6 @@ source.addEventListener('message', function(e) {
                     });
   vectorSource.addFeature(feature);
 }, false);
+
+
+//})();

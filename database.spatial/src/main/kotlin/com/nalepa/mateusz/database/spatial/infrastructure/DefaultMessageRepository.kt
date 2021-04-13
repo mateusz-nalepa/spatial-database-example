@@ -16,30 +16,42 @@ class DefaultMessageRepository : MessageRepository {
 
     override fun createTable() = SchemaUtils.create(Messages)
 
-    override fun create(m: Message): Message {
-        m.id = Messages.insert(toRow(m))[Messages.id]
-        return m
-    }
+    @Suppress("PARAMETER_NAME_CHANGED_ON_OVERRIDE")
+    override fun create(message: Message): Message =
+        message.copy(
+            id = Messages.insert(toRow(message))[Messages.id]
+        )
 
-    override fun findAll() = Messages.selectAll().map { fromRow(it) }
+    override fun findAll() = Messages.selectAll().map { it.toMessage() }
 
-    override fun findByBoundingBox(box: PGbox2d) = Messages.select { Messages.location within box }.map { fromRow(it) }
+    override fun findByBoundingBox(box: PGbox2d) =
+        Messages
+            .select { Messages.location within box }
+            .map { it.toMessage() }
 
     override fun updateLocation(userName: Int, location: Point) {
         location.srid = 4326
-        Messages.update({ Messages.id eq userName }) { it[Messages.location] = location }
+        Messages.update({ Messages.id eq userName }) {
+            it[Messages.location] = location
+        }
     }
 
     override fun deleteAll() = Messages.deleteAll()
 
-    private fun toRow(m: Message): Messages.(UpdateBuilder<*>) -> Unit = {
-        if (m.id != null) it[id] = m.id!!
-        it[content] = m.content
-        it[author] = m.author
-        it[location] = m.location
+    private fun toRow(message: Message): Messages.(UpdateBuilder<*>) -> Unit = {
+        if (message.id != null) {
+            it[id] = message.id
+        }
+        it[content] = message.content
+        it[author] = message.author
+        it[location] = message.location?.toEntity()
     }
 
-    private fun fromRow(r: ResultRow) =
-        Message(r[Messages.content], r[Messages.author], r[Messages.location], r[Messages.id])
-
+    private fun ResultRow.toMessage() =
+        Message(
+            content = this[Messages.content],
+            author = this[Messages.author],
+            location = this[Messages.location]?.toDomain(),
+            id = this[Messages.id]
+        )
 }

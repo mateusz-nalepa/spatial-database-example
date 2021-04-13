@@ -1,43 +1,37 @@
 package com.nalepa.mateusz.database.spatial.api
 
-import com.nalepa.mateusz.database.spatial.domain.User
 import com.nalepa.mateusz.database.spatial.infrastructure.UserRepository
 import org.postgis.PGbox2d
 import org.postgis.Point
-import org.springframework.http.HttpStatus
+import org.springframework.http.HttpStatus.CREATED
+import org.springframework.http.HttpStatus.NO_CONTENT
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/user")
-class UserController(val repo: UserRepository) {
+class UserController(val repository: UserRepository) {
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    fun create(@RequestBody u: User) {
-        repo.create(u)
+    @ResponseStatus(CREATED)
+    fun create(@RequestBody u: UserDto) {
+        repository.create(u.toDomain())
     }
 
     @GetMapping
-    fun list() =
-        repo.findAll()
+    fun list(): List<UserDto> {
+        return repository.findAll().map { it.toDto() }
+    }
 
     @GetMapping("/bbox/{xMin},{yMin},{xMax},{yMax}")
     fun findByBoundingBox(
-        @PathVariable xMin: Double,
-        @PathVariable yMin: Double,
-        @PathVariable xMax: Double,
-        @PathVariable yMax: Double
-    ) =
-        repo.findByBoundingBox(
-            PGbox2d(Point(xMin, yMin), Point(xMax, yMax))
-        )
+        @PathVariable xMin: Double, @PathVariable yMin: Double,
+        @PathVariable xMax: Double, @PathVariable yMax: Double
+    ) = repository.findByBoundingBox(PGbox2d(Point(xMin, yMin), Point(xMax, yMax)))
 
     @PutMapping("/{userName}/location/{x},{y}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseStatus(NO_CONTENT)
     fun updateLocation(
         @PathVariable userName: String,
-        @PathVariable x: Double,
-        @PathVariable y: Double
-    ) =
-        repo.updateLocation(userName, Point(x, y))
+        @PathVariable x: Double, @PathVariable y: Double
+    ) = repository.updateLocation(userName, Point(x, y))
 }
