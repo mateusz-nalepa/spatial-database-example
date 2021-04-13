@@ -1,31 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Geospatial Messenger</title>
-<!--    <link rel="stylesheet" href="http://openlayers.org/en/v3.14.2/css/ol.css" type="text/css">-->
-<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/css/ol.css">-->
-<!--    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/build/ol.js"></script>-->
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <title>Demo Messenger</title>
+    <link rel="stylesheet" href="bootstrap/bootstrap-3.3.7.min.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="ol.css">
+    <link rel="stylesheet" href="openLayers/ol-3.14.2.css">
 
-    <script src="http://code.jquery.com/jquery-2.2.1.min.js"></script>
-    <script src="ol.js"></script>
-    <script src="http://www.appelsiini.net/download/jquery.jeditable.mini.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="jQuery/jQuery-3.6.0.min.js"></script>
+    <script src="openLayers/ol-3.14.2.js"></script>
+    <script src="jQuery/jQuery.jeditable-2.0.17.min.js"></script>
+    <script src="bootstrap/bootstrap-3.3.7.min.js"></script>
 </head>
 <body>
-<div id="map" class="map"></div>
-<div id="popup"></div>
 <div>
     <span>Current user: </span><select id="select-user"></select>
 </div>
-<div>
-    <a href="/docs/index.html">REST API documentation</a>
-</div>
+<div id="map" class="map"></div>
+<div id="popup"></div>
 <script src="map.js"></script>
-<!--<script src="ol.js"></script>-->
-
 </body>
 </html>
