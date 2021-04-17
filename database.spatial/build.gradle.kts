@@ -43,6 +43,9 @@ dependencies {
 
 	implementation("org.apache.commons:commons-lang3:3.8.1")
 
+	implementation("io.vavr:vavr-kotlin:0.10.2")
+
+
 //	implementation("com.github.mayconbordin:postgis-geojson:LATEST")  {
 ////		exclude(module = "postgresql")
 //	}

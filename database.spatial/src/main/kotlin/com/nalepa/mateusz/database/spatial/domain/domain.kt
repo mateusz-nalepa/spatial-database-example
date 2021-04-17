@@ -21,3 +21,10 @@ data class LocationDto(
     // od -180 na poludnie do +180 na polnosc
     val yLongitude: Double
 )
+
+data class SearchBox(
+    val llx: Double,
+    val lly: Double,
+    val urX: Double,
+    val urY: Double
+)

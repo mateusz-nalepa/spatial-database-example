@@ -5,19 +5,12 @@ import com.nalepa.mateusz.database.spatial.domain.User
 import com.nalepa.mateusz.database.spatial.infrastructure.MessageRepository
 import com.nalepa.mateusz.database.spatial.infrastructure.UserRepository
 import org.springframework.boot.CommandLineRunner
-import org.springframework.stereotype.Component
-import javax.annotation.PostConstruct
 
-@Component
+//@Component
 class RunAtStart(
     private val ur: UserRepository,
     private val mr: MessageRepository
 ) : CommandLineRunner {
-
-    @PostConstruct
-    fun init() = CommandLineRunner {
-
-    }
 
     override fun run(vararg args: String?) {
         ur.createTable()

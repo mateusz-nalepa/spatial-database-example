@@ -11,3 +11,5 @@ spring:
   mvc:
     async:
       request-timeout: 1000000
+
+poiType: xy
