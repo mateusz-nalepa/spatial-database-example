@@ -41,6 +41,8 @@ dependencies {
 	implementation("org.jetbrains.exposed:exposed:0.17.13")
 	implementation("org.jetbrains.exposed:spring-transaction:0.17.13")
 
+	implementation("org.apache.commons:commons-lang3:3.8.1")
+
 //	implementation("com.github.mayconbordin:postgis-geojson:LATEST")  {
 ////		exclude(module = "postgresql")
 //	}

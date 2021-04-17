@@ -1,6 +1,6 @@
 package com.nalepa.mateusz.database.spatial.infrastructure
 
-import com.nalepa.mateusz.database.spatial.domain.Point
+import com.nalepa.mateusz.database.spatial.domain.LocationDto
 import org.jetbrains.exposed.sql.Table
 
 typealias PostGisPoint = org.postgis.Point
@@ -20,11 +20,11 @@ object Users : Table() {
     val location = point("location").nullable()
 }
 
-fun Point.toEntity(): PostGisPoint {
-    return PostGisPoint(x, y)
+fun LocationDto.toEntity(): PostGisPoint {
+    return PostGisPoint(xLatitude, yLongitude)
 }
 
-fun PostGisPoint.toDomain(): Point {
-    return Point(x, y)
+fun PostGisPoint.toDomain(): LocationDto {
+    return LocationDto(x, y)
 }
 

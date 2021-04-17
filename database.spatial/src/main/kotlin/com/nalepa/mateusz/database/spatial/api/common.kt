@@ -1,19 +1,19 @@
 package com.nalepa.mateusz.database.spatial.api
 
-import com.nalepa.mateusz.database.spatial.domain.Point
+import com.nalepa.mateusz.database.spatial.domain.LocationDto
 
 class PointDto(
     val type: String,
     val coordinates: Array<Double>,
 )
 
-fun Point.toDto(): PointDto {
+fun LocationDto.toDto(): PointDto {
     return PointDto(
         type = "Point",
-        coordinates = arrayOf(x, y),
+        coordinates = arrayOf(xLatitude, yLongitude),
     )
 }
 
-fun PointDto.toPoint(): Point {
-    return Point(coordinates[0], coordinates[1])
+fun PointDto.toPoint(): LocationDto {
+    return LocationDto(coordinates[0], coordinates[1])
 }
